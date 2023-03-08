@@ -1,0 +1,9 @@
+.header__logo {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 142px;
+    height: 33px;
+}
