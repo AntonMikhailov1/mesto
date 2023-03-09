@@ -4,6 +4,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    width: 142px;
-    height: 33px;
+    width: 103.74px;
+    height: 24.4px;
+}
+
+@media screen and (min-width: 927px) {
+    .header__logo {
+        width: 142px;
+        height: 33px;
+    }
 }

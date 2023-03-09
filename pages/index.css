@@ -1,6 +1,27 @@
+/* Normalize */
+
 @import "../vendor/normalize.css";
+
+/* Page */
 
 @import "../blocks/page/page.css";
 
+/* Content */
+
+@import "../blocks/content/content.css";
+
+/* Header */
+
 @import "../blocks/header/header.css";
 @import "../blocks/header/__logo/header__logo.css";
+
+/* Profile */
+
+@import "../blocks/profile/profile.css";
+@import "../blocks/profile/__avatar/profile__avatar.css";
+@import "../blocks/profile/__info/profile__info.css";
+@import "../blocks/profile/__name/profile__name.css";
+@import "../blocks/profile/__disc/profile__disc.css";
+@import "../blocks/profile/__add-btn/profile__add-btn.css";
+
+/*  */
