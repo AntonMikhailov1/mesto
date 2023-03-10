@@ -1,0 +1,18 @@
+.footer {
+    margin: 0;
+    margin-bottom: 36px;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: clamp(0.875rem, 0.7412rem + 0.6689vw, 1.125rem);
+    font-weight: 400;
+    line-height: auto;
+    color: #545454;
+    max-width: 880px;
+    width: 100%;
+}
+
+@media screen and (min-width: 918px) {
+    .footer {
+        margin-bottom: 60px;
+    }
+}

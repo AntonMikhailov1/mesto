@@ -32,3 +32,7 @@
 @import "../blocks/element/__group/element__group.css";
 @import "../blocks/element/__like-btn/element__like-btn.css";
 @import "../blocks/element/__title/element__title.css";
+
+/* Footer */
+
+@import "../blocks/footer/footer.css";
