@@ -24,4 +24,11 @@
 @import "../blocks/profile/__disc/profile__disc.css";
 @import "../blocks/profile/__add-btn/profile__add-btn.css";
 
-/*  */
+/* Elements */
+
+@import "../blocks/elements/elements.css";
+@import "../blocks/element/element.css";
+@import "../blocks/element/__image/element__image.css";
+@import "../blocks/element/__group/element__group.css";
+@import "../blocks/element/__like-btn/element__like-btn.css";
+@import "../blocks/element/__title/element__title.css";

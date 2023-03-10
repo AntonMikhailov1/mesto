@@ -2,15 +2,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-size: 27px;
+    font-size: clamp(1.6875rem, 1.1858rem + 2.5084vw, 2.625rem);
     font-weight: 500;
     line-height: auto;
 }
 
-@media screen and (min-width: 927px) {
+@media screen and (min-width: 619px) {
     .profile__name {
-        font-size: 42px;
-        font-weight: 500;
         line-height: 1.143;
     } 
 }

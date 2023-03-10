@@ -2,9 +2,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    row-gap: 7px;
+    row-gap: 10px;
     margin: 0;
-    margin-bottom: 33px;
+    margin-bottom: 32px;
     padding: 0;
     box-sizing: border-box;
     max-width: 336px;
@@ -12,7 +12,7 @@
     height: auto;
 }
 
-@media screen and (min-width: 927px) {
+@media screen and (min-width: 619px) {
     .profile__info {
         margin: 0;
         align-items: flex-start;
