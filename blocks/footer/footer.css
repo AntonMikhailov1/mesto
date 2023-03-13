@@ -7,12 +7,19 @@
     font-weight: 400;
     line-height: auto;
     color: #545454;
-    max-width: 880px;
+    max-width: 282px;
     width: 100%;
+}
+
+@media screen and (min-width: 619px) {
+    .footer {
+        max-width: 584px;
+    }
 }
 
 @media screen and (min-width: 918px) {
     .footer {
+        max-width: 880px;
         margin-bottom: 60px;
     }
 }

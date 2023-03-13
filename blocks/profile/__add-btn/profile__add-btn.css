@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #000000;
+    background: url("../../../images/add320.png") no-repeat center;
     border: 2px solid #FFFFFF;
     border-radius: 2px;
     width: 282px;
@@ -14,6 +14,7 @@
   .profile__add-btn {
       margin-left: auto;
       max-width: 150px;
+      background: url("../../../images/add1280.png") no-repeat center;
   }
 }
 

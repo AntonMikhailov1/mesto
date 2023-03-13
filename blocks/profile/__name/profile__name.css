@@ -1,15 +1,17 @@
 .profile__name {
     margin: 0;
+    margin-left: 26px;
     padding: 0;
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
-    align-items: first baseline;
-    column-gap: 10px;
+    align-items: center;
+    column-gap: 11px;
 }
 
 @media screen and (min-width: 619px) {
     .profile__name {
+        margin: 0; 
         column-gap: 18px;
     } 
 }

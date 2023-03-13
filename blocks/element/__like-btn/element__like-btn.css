@@ -3,12 +3,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #FFFFFF;
+    background: url("../../../images/like.png") no-repeat;
+    width: 22px;
+    height: 19px; 
     border: none;
-}
-
-.element__like-btn:active {
-    background-color: #000000;
 }
 
 @media (hover: hover) {

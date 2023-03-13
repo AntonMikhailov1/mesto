@@ -2,13 +2,23 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-size: clamp(0.875rem, 0.7412rem + 0.6689vw, 1.125rem);
+    display: inline-block;
+    font-size: 14px;
     font-weight: 400;
     line-height: 1.214;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 @media screen and (min-width: 619px) {
     .profile__disc {
         line-height: 1.122;
+    } 
+}
+
+@media screen and (min-width: 918px) {
+    .profile__disc {
+        font-size: 18px;
     } 
 }

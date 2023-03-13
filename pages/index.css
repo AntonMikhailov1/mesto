@@ -2,9 +2,14 @@
 
 @import "../vendor/normalize.css";
 
+/* Fonts */
+
+@import "../fonts/fonts.css";
+
 /* Page */
 
 @import "../blocks/page/page.css";
+@import "../blocks/page/_no-scroll/page_no-scroll.css";
 
 /* Content */
 
@@ -33,6 +38,7 @@
 @import "../blocks/element/__image/element__image.css";
 @import "../blocks/element/__group/element__group.css";
 @import "../blocks/element/__like-btn/element__like-btn.css";
+@import "../blocks/element/__like-btn/_active/element__like-btn_active.css";
 @import "../blocks/element/__title/element__title.css";
 
 /* Footer */
@@ -42,6 +48,7 @@
 /* Pop-up */
 
 @import "../blocks/popup/popup.css";
+@import "../blocks/popup/_opened/popup_opened.css";
 @import "../blocks/popup/__close-btn/popup__close-btn.css";
 @import "../blocks/popup/__container/popup__container.css";
 @import "../blocks/popup/__form/popup__form.css";

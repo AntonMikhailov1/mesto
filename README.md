@@ -1,17 +1,32 @@
-# Проект: Место
 
-### Обзор
+# Mesto
 
-* Figma
-* Картинки
+Mesto - проект для 4-го спринта Яндекс.Практикум
 
-**Figma**
 
-* [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
 
-**Картинки**
+## Tech Stack
 
-Доставать картинки предстоит из Фигмы. Это расхожая практика, поэтому полезно потренироваться.
-Не забудьте [оптимизировать картинки](https://tinypng.com/), чтобы ваш сайт загружался быстрее.
+**Frontend:** HTML CSS JavaScript
 
-Удачи!
+
+## Features
+
+- Javascript DOM API
+Браузерные события обрабатываются с помощью DOM API нативного JS.
+- Adaptive fluid layout
+Адаптивность имплементруется с помощью медиа-запросов `@media`
+Отзывчивость имплементруется  с помощью технологий flex, grid и процентов.
+- BEM methodology and file structure
+Все классы стилей и их расположение в документе соотвествуют методологии БЭМ.
+
+## Githab Pages link
+
+https://antonmikhailov1.github.io/mesto/
+
+
+## Author
+
+- [@AntonMikhailov1](https://github.com/AntonMikhailov1)
+
+

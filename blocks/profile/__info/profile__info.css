@@ -2,9 +2,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    row-gap: 10px;
+    row-gap: 7px;
     margin: 0;
-    margin-bottom: 32px;
+    margin-bottom: 33px;
     padding: 0;
     box-sizing: border-box;
     max-width: 336px;
@@ -16,5 +16,6 @@
     .profile__info {
         margin: 0;
         align-items: flex-start;
+        max-width: 100%;
     }
 }
