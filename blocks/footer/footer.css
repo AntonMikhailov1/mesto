@@ -3,11 +3,6 @@
     margin-bottom: 36px;
     padding: 0;
     box-sizing: border-box;
-    font-size: clamp(0.875rem, 0.7412rem + 0.6689vw, 1.125rem);
-    font-weight: 400;
-    line-height: auto;
-    color: #545454;
-    max-width: 282px;
     width: 100%;
 }
 
