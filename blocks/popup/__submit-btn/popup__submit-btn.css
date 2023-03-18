@@ -18,15 +18,14 @@
 @media screen and (min-width: 619px) {
     .popup__submit-btn {
         font-size: 18px;
+        line-height: 1.222;
         width: 358px;
         height: 50px;
   }
 }
 
-@media (hover: hover) {
-    .popup__submit-btn:hover {
-      opacity: 0.8;
-      transition: opacity 0.3s ease-in-out;
-      cursor: pointer;
-    }
-  }
+.popup__submit-btn:hover {
+    opacity: 0.8;
+    transition: opacity 0.3s ease-in-out;
+    cursor: pointer;
+}

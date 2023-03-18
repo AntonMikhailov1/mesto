@@ -3,24 +3,23 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background: url("../../../images/edit320.png") no-repeat;
+    background: url("../../../images/edit-btn320.svg") no-repeat;
     width: 18px;
     height: 18px;
     border: none;
+    flex: 0 0 auto
 }
 
 @media screen and (min-width: 619px) {
   .profile__edit-btn {
-        background: url("../../../images/edit1280.png") no-repeat;
+        background: url("../../../images/edit-btn1280.svg") no-repeat;
         width: 24px;
         height: 24px;
   }
 }
 
-@media (hover: hover) {
-    .profile__edit-btn:hover {
-      opacity: 0.6;
-      transition: opacity 0.3s ease-in-out;
-      cursor: pointer;
-    }
-  }
+.profile__edit-btn:hover {
+  opacity: 0.6;
+  transition: opacity 0.3s ease-in-out;
+  cursor: pointer;
+}

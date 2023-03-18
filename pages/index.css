@@ -4,12 +4,11 @@
 
 /* Fonts */
 
-@import "..vendor/fonts/fonts.css";
+@import "../vendor/fonts/fonts.css";
 
 /* Page */
 
 @import "../blocks/page/page.css";
-@import "../blocks/page/_no-scroll/page_no-scroll.css";
 
 /* Content */
 
@@ -25,8 +24,8 @@
 @import "../blocks/profile/profile.css";
 @import "../blocks/profile/__avatar/profile__avatar.css";
 @import "../blocks/profile/__info/profile__info.css";
+@import "../blocks/profile/__name-container/profile__name-container.css";
 @import "../blocks/profile/__name/profile__name.css";
-@import "../blocks/profile/__name-text/profile__name-text.css";
 @import "../blocks/profile/__disc/profile__disc.css";
 @import "../blocks/profile/__add-btn/profile__add-btn.css";
 @import "../blocks/profile/__edit-btn/profile__edit-btn.css";
@@ -55,6 +54,5 @@
 @import "../blocks/popup/__container/popup__container.css";
 @import "../blocks/popup/__form/popup__form.css";
 @import "../blocks/popup/__title/popup__title.css";
-@import "../blocks/popup/__field-disc/popup__field-disc.css";
-@import "../blocks/popup/__field-name/popup__field-name.css";
+@import "../blocks/popup/__field/popup__field.css";
 @import "../blocks/popup/__submit-btn/popup__submit-btn.css";

@@ -26,10 +26,11 @@
             src="images/avatar.jpg" 
             alt="Фотография профиля">
             <div class="profile__info">
-                <div class="profile__name">
-                    <h1 class="profile__name-text">Жак-Ив Кусто</h1>
-                    <button type="button" class="profile__edit-btn"></button>
-                </div>
+                    <div class="profile__name-container">
+                        <h1 class="profile__name">Жак-Ив Кусто</h1>
+                        <button type="button" class="profile__edit-btn"></button>  
+                    </div>
+                    
                 <p class="profile__disc">Исследователь океана</p>
             </div>
             <button type="button" class="profile__add-btn"></button>
@@ -108,27 +109,27 @@
 
     <footer class="footer"><p class="footer__text">&copy; 2023 Mesto Russia</p></footer>
 
-    <form action="submit" 
-            class="popup"
-            method="post">
-        <button class="popup__close-btn" type="button"></button>    
-        <fieldset class="popup__form">
-            <legend class="popup__title">Редактировать профиль</legend>
-            <input class="popup__field-name" 
-                    type="text" 
-                    value="Жак-Ив Кусто" 
-                    maxlength="16" 
-                    required>
-            <input class="popup__field-disc" 
-                    type="text" 
-                    value="Исследователь океана" 
-                    maxlength="24" 
-                    required>
-            <input class="popup__submit-btn" 
-                    type="submit" 
-                    value="Сохранить">
-        </fieldset>
-    </form>
+    <div class="popup">
+        <div class="popup_container">
+            <button type="button" class="popup__close-btn"></button>  
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <form action="submit" 
+                  class="popup__form"
+                  method="post">
+                <input class="popup__field popup__field_input_name" 
+                        type="text"
+                        name="name" 
+                        value="Жак-Ив Кусто" 
+                        required>
+                <input class="popup__field popup__field_input_discription" 
+                        type="text" 
+                        name="discription" 
+                        value="Исследователь океана" 
+                        required>
+                <button class="popup__submit-btn" type="submit">Сохранить</button>
+            </form>
+        </div>
+    </div>
 
     <script src="scripts/index.js"></script>
 </body>

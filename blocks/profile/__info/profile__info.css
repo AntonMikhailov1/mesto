@@ -7,8 +7,7 @@
     margin-bottom: 33px;
     padding: 0;
     box-sizing: border-box;
-    max-width: 336px;
-    width: 100%;
+    max-width: 282px;
     height: auto;
 }
 
@@ -16,6 +15,11 @@
     .profile__info {
         margin: 0;
         align-items: flex-start;
-        max-width: 100%;
+    }
+}
+
+@media screen and (min-width: 918px) {
+    .profile__info {
+        max-width: 500px;
     }
 }

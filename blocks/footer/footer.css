@@ -1,6 +1,7 @@
 .footer {
     margin: 0;
     margin-bottom: 36px;
+    max-width: 282px;
     padding: 0;
     box-sizing: border-box;
     width: 100%;
