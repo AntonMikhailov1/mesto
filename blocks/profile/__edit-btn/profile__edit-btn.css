@@ -8,6 +8,8 @@
     height: 18px;
     border: none;
     flex: 0 0 auto;
+    transition: opacity 0.3s ease-in-out;
+    cursor: pointer;
 }
 
 @media screen and (min-width: 619px) {
@@ -20,6 +22,4 @@
 
 .profile__edit-btn:hover {
   opacity: 0.6;
-  transition: opacity 0.3s ease-in-out;
-  cursor: pointer;
 }

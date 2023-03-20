@@ -8,10 +8,10 @@
     height: 19px;
     border: none;
     flex: 0 0 auto;
+    transition: opacity 0.3s ease-in-out;
+    cursor: pointer;
 }
 
 .element__like-btn:hover {
   opacity: 0.5;
-  transition: opacity 0.3s ease-in-out;
-  cursor: pointer;
 }

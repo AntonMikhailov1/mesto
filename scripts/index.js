@@ -13,6 +13,9 @@ let fieldName = popup.querySelector('.popup__field_input_name');
 let fieldDisc = popup.querySelector('.popup__field_input_discription');
 
 function popupOpen() {
+    fieldName.value = profileName.textContent;
+    fieldDisc.value = profileDisc.textContent;
+
     popup.classList.add('popup_opened');
 }
 
