@@ -15,7 +15,7 @@ const fieldDesc = page.querySelector('.popup__field_input_description');
 const fieldPlaceName= page.querySelector('.popup__field_input_place-name');
 const fieldPlaceImgLink = page.querySelector('.popup__field_input_place-img-link');
 
-const initialCards = [
+const cards = [
   {
     name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -45,7 +45,7 @@ const initialCards = [
 const cardTemplate = document.querySelector('#template-element').content;
 
 function renderCards() {
-  initialCards.forEach(card => {
+  cards.forEach(card => {
     const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
     cardElement.querySelector('.element__image').src = card.link;
     cardElement.querySelector('.element__title').textContent = card.name;
@@ -79,20 +79,33 @@ function popupClose(e) {
 }
 
 function popupSubmit(e) {
-    e.preventDefault();
+    
     if (e.target.parentElement.parentElement === popupProfile) {
+        e.preventDefault();
         profileName.textContent = fieldName.value;
         profileDesc.textContent = fieldDesc.value;
         popupClose(e);
     };
     if (e.target.parentElement.parentElement === popupElements) {
-        initialCards.unshift({name: fieldPlaceName.value, link: fieldPlaceImgLink.value});
+        e.preventDefault();
+        cards.unshift({name: fieldPlaceName.value, link: fieldPlaceImgLink.value});
         const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
-        cardElement.querySelector('.element__image').src = initialCards[0].link;
-        cardElement.querySelector('.element__title').textContent = initialCards[0].name;
+        cardElement.querySelector('.element__image').src = cards[0].link;
+        cardElement.querySelector('.element__title').textContent = cards[0].name;
         page.querySelector('.elements__container').prepend(cardElement);
+        deleteCard();
+        likeCard();
         popupClose(e);
     };
+}
+
+function likeCard() {
+  const likeBtns = page.querySelectorAll('.element__like-btn');
+  likeBtns.forEach(likeBtn => {
+    likeBtn.addEventListener('click', () => {
+      likeBtn.classList.toggle('element__like-btn_active')
+   });
+  })
 }
 
 
@@ -105,6 +118,18 @@ closeBtns.forEach(closeBtn => {
 popupForms.forEach(popupForm => {
   popupForm.addEventListener('submit', popupSubmit);
 });
+
+function deleteCard() {
+  const deleteBtns = page.querySelectorAll('.element__delete-btn');
+  console.log(deleteBtns);
+  console.log(deleteBtns);
+  deleteBtns.forEach((deleteBtn, index) => {
+    deleteBtn.addEventListener('click', () => {
+      cards.splice(index, 1);
+      deleteBtn.parentElement.remove();
+    });
+  });
+};
 
 
 
