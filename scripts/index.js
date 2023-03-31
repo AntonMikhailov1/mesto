@@ -4,7 +4,6 @@ const popup = page.querySelector('.popup');
 const popupProfile = page.querySelector('.popup__profile');
 const popupElements = page.querySelector('.popup__elements');
 
-const editBtn = profile.querySelector('.profile__edit-btn');
 const profileName = profile.querySelector('.profile__name');
 const profileDesc = profile.querySelector('.profile__desc');
 
@@ -44,23 +43,28 @@ const initialCards = [
 ];
 
 const cardTemplate = document.querySelector('#template-element').content;
-initialCards.forEach(card => {
-  const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
-  cardElement.querySelector('.element__image').src = card.link;
-  cardElement.querySelector('.element__title').textContent = card.name;
-  page.querySelector('.elements__container').append(cardElement);
-})
+
+function renderCards() {
+  initialCards.forEach(card => {
+    const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
+    cardElement.querySelector('.element__image').src = card.link;
+    cardElement.querySelector('.element__title').textContent = card.name;
+    page.querySelector('.elements__container').append(cardElement);
+  })
+} 
+renderCards();
 
 function popupOpen(e) {
-
-    if (e.target.classList.contains('profile__edit-btn')) {
+    const editBtn = profile.querySelector('.profile__edit-btn');
+    const addBtn = profile.querySelector('.profile__add-btn');
+    if (e.target === editBtn) {
         fieldName.value = profileName.textContent;
         fieldDesc.value = profileDesc.textContent;
-
         popupProfile.classList.add('popup_opened');
     };
-
-    if (e.target.classList.contains('profile__add-btn')) {
+    if (e.target === addBtn) {
+        fieldPlaceName.value = '';
+        fieldPlaceImgLink.value = '';
         popupElements.classList.add('popup_opened');
     };
 }
@@ -82,7 +86,12 @@ function popupSubmit(e) {
         popupClose(e);
     };
     if (e.target.parentElement.parentElement === popupElements) {
-        initialCards.unshift({name: fieldPlaceName, link: fieldPlaceImgLink});
+        initialCards.unshift({name: fieldPlaceName.value, link: fieldPlaceImgLink.value});
+        const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
+        cardElement.querySelector('.element__image').src = initialCards[0].link;
+        cardElement.querySelector('.element__title').textContent = initialCards[0].name;
+        page.querySelector('.elements__container').prepend(cardElement);
+        popupClose(e);
     };
 }
 
