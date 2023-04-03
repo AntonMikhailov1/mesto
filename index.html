@@ -37,73 +37,7 @@
         </section>
 
         <section class="elements">
-            <ul class="elements__container">
-                <!-- <li class="element">
-                    <img class="element__image"
-                    src="images/yosemite.jpg" 
-                    alt="Йосемити" 
-                    >
-                    <div class="element__group">
-                        <h2 class="element__title">Йосемити</h2>
-                        <button type="button" class="element__like-btn"></button>
-                    </div>
-                </li>
-
-                <li class="element">
-                    <img class="element__image"
-                    src="images/altai.jpg" 
-                    alt="Алтай" 
-                    >
-                    <div class="element__group">
-                        <h2 class="element__title">Алтай</h2>
-                        <button class="element__like-btn"></button>
-                    </div>
-                </li>
-
-                <li class="element">
-                    <img class="element__image"
-                    src="images/iceland.jpg" 
-                    alt="Исландия" 
-                    >
-                    <div class="element__group">
-                        <h2 class="element__title">Исландия</h2>
-                        <button class="element__like-btn"></button>
-                    </div>
-                </li>
-
-                <li class="element">
-                    <img class="element__image"
-                    src="images/azores.jpg" 
-                    alt="Азорские острова" 
-                    >
-                    <div class="element__group">
-                        <h2 class="element__title">Азорские острова</h2>
-                        <button class="element__like-btn"></button>
-                    </div>
-                </li>
-
-                <li class="element">
-                    <img class="element__image"
-                    src="images/kamchatka.jpg" 
-                    alt="Камчатка" 
-                    >
-                    <div class="element__group">
-                        <h2 class="element__title">Камчатка</h2>
-                        <button class="element__like-btn"></button>
-                    </div>
-                </li>
-
-                <li class="element">
-                    <img class="element__image"
-                    src="images/moher.jpg" 
-                    alt="Утёсы Мохер" 
-                    >
-                    <div class="element__group">
-                        <h2 class="element__title">Утёсы Мохер</h2>
-                        <button class="element__like-btn"></button>
-                    </div>
-                </li>-->
-            </ul>
+            <ul class="elements__container"></ul>
         </section>    
     </main>
 
@@ -145,7 +79,7 @@
                         placeholder="Название"
                         required>
                 <input class="popup__field popup__field_input_place-img-link" 
-                        type="text" 
+                        type="url" 
                         name="place-img-link" 
                         value="" 
                         placeholder="Ссылка на картинку"
@@ -155,6 +89,12 @@
         </div>
     </div>
 
+    <figure class="popup popup__image-container">
+        <button type="button" class="popup__close-btn"></button>  
+        <img class="popup__image" src="" alt="">
+        <figcaption class="popup__image-caption"></figcaption>
+    </figure>
+    
     <template id="template-element">
         <li class="element">
             <button type="button" class="element__delete-btn"></button>

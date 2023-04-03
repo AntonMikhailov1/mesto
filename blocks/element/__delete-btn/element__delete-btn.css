@@ -6,7 +6,7 @@
     position: absolute;
     top: 30px;
     right: 30px;
-    background: url("../../../images/closeIcon320.svg") no-repeat;
+    background: url("../../../images/trashIcon.svg") no-repeat;
     border: none;
     border-radius: 2px;
     width: 20px;
@@ -16,5 +16,5 @@
 }
 
 .element__delete-btn:hover {
-  opacity: 0.5;
+  opacity: 0.6;
 }
