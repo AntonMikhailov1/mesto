@@ -4,6 +4,7 @@
     padding: 0;
     max-width: 75vmax;
     max-height: 75vmax;
+    object-fit: contain;
     position: fixed;
     top: 50%;
     left: 50%;
