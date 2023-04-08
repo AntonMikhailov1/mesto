@@ -19,13 +19,13 @@ const fieldPlaceName= page.querySelector('.popup__field_input_place-name');
 const fieldPlaceImgLink = page.querySelector('.popup__field_input_place-img-link');
 
 // Popup Profile
-const popupProfile = page.querySelector('.popup__profile');
+const popupProfile = page.querySelector('.popup_type_profile');
 
 // Popup Elements
-const popupElements = page.querySelector('.popup__elements');
+const popupElements = page.querySelector('.popup_type_elements');
 
 // Popup Image
-const popupImageContainer = page.querySelector('.popup__image-container');
+const popupImageContainer = page.querySelector('.popup_type_image-container');
 const popupImage = popupImageContainer.querySelector('.popup__image');
 const popupImageCaption = popupImageContainer.querySelector('.popup__image-caption');
 
