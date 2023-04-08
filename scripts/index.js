@@ -126,6 +126,7 @@ function popupElementsOpen() {
 
 function popupImageOpen(name, link) {
   popupImage.src = link;
+  popupImage.alt = name;
   popupImageCaption.textContent = name;
   popupImageContainer.classList.add('popup_opened');
 }
@@ -164,7 +165,7 @@ function handlePopupClose() {
   });
 }
 
-handlePopupClose()
+handlePopupClose();
 
 function handlePopupSubmit() {
   popupForms.forEach(popupForm => {
@@ -177,4 +178,4 @@ function handlePopupSubmit() {
   });
 }
 
-handlePopupSubmit()
+handlePopupSubmit();
