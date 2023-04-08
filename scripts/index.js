@@ -67,6 +67,7 @@ function createCard(card) {
     const deleteBtn = cardElement.querySelector('.element__delete-btn');
     cardImage.src = card.link;
     cardTitle.textContent = card.name;
+    cardImage.alt = card.name;
     toggleLikeBtn(likeBtn);
     handleDeleteCard(deleteBtn);
     handlePopupImageOpen(card.name, card.link, cardImage);
