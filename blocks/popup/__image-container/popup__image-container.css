@@ -2,12 +2,8 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    max-width: 75vmax;
-    max-height: 75vmax;
-    object-fit: contain;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    box-shadow:  0px 0px 0px 3000px rgba(0, 0, 0, 0.9);
 }
