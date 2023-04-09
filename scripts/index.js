@@ -127,8 +127,7 @@ function openPopupProfile(popupProfile) {
 }
 
 function openPopupElements(popupElements) {
-    fieldPlaceName.reset();
-    fieldPlaceImgLink.reset();
+    popupElements.closest('.popup__form').reset();
     openPopup(popupElements);
 }
 
