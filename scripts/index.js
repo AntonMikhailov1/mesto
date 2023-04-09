@@ -127,7 +127,8 @@ function openPopupProfile(popupProfile) {
 }
 
 function openPopupElements(popupElements) {
-    popupElements.closest('.popup__form').reset();
+    fieldPlaceName.value = '';
+    fieldPlaceImgLink.value = '';
     openPopup(popupElements);
 }
 
