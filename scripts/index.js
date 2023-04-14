@@ -216,11 +216,9 @@ function handlePopupCloseByOverlayClick(popup) {
   });
 };
 
-
 function handlePopupSubmit() {
   popupForms.forEach(popupForm => {
     if (popupForm.closest('.popup') === popupProfile) {
-      console.log(popupProfile)
       popupForm.addEventListener('submit', submitPopupProfile);
     }
     if (popupForm.closest('.popup') === popupElements) {
