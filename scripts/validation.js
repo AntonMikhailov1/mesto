@@ -59,7 +59,6 @@ function disableSubmitButton(inputList, buttonElement, validationConfig) {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(validationConfig.inactiveButtonClass);
     buttonElement.setAttribute('disabled', true);
-    console.log(buttonElement);
   } 
 }
 
