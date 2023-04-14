@@ -2,6 +2,10 @@
 
 const page = document.querySelector('.page');
 
+// Content
+
+const content = document.querySelector('.content');
+
 // Profile
 const profile = page.querySelector('.profile');
 const profileName = profile.querySelector('.profile__name');
@@ -98,13 +102,22 @@ function renderInitialCards(cards) {
 
 renderInitialCards(cards);
 
+
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  content.classList.add('content_inactive');
+  enableValidation(validationConfig);
+  handlePopupCloseByKey(popup);
+  enablePointer();
+  handlePopupCloseByOverlayClick(popup);
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  content.classList.remove('content_inactive');
+  disablePointer();
 }
+
 
 function submitPopupProfile(evt) {
     evt.preventDefault();
@@ -164,12 +177,39 @@ function handlePopupClose() {
 
 handlePopupClose();
 
+function handlePopupCloseByKey(popup) {
+  document.addEventListener('keydown', function closePopupByKey(evt) {
+    if (evt.key === "Escape") {
+      closePopup(popup);
+      document.removeEventListener('keydown', (evt) => closePopupByKey);
+    }
+  });
+}
+
+function enablePointer() {
+  page.classList.add('page_mouseover');
+}
+
+function disablePointer() {
+  page.classList.remove('page_mouseover');
+}
+
+function handlePopupCloseByOverlayClick(popup) {
+  page.addEventListener('mousedown', function closePopupByOverlayClick(evt) {
+    console.log(evt.target.class)
+    if (evt.target.classList.contains('page_mouseover') && !evt.target.classList.contains('popup')) {
+      closePopup(popup);
+      page.removeEventListener('mousedown', closePopupByOverlayClick);
+    }
+  });
+}
+
 function handlePopupSubmit() {
   popupForms.forEach(popupForm => {
-    if (popupForm.parentElement.parentElement === popupProfile) {
+    if (popupForm.closest === popupProfile) {
       popupForm.addEventListener('submit', submitPopupProfile);
     }
-    if (popupForm.parentElement.parentElement === popupElements) {
+    if (popupForm.closest === popupElements) {
       popupForm.addEventListener('submit', submitPopupElements);
     }
   });

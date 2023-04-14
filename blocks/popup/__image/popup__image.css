@@ -8,4 +8,5 @@
     object-fit: contain;
     object-position: center;
     box-shadow:  0px 0px 0px 3000px rgba(0, 0, 0, 0.9);
+    z-index: 999;
 }

@@ -1,7 +1,7 @@
 .popup__field {
     box-sizing: border-box;
     margin: 0;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     padding: 0;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -15,13 +15,17 @@
     line-height: 1.0;
 }
 
-.popup__field:last-of-type {
-    margin-bottom: 44px;
+.popup__field:focus {
+    outline: none;
 }
 
-@media screen and (min-width: 619px) {
+/* .popup__field:last-of-type {
+    margin-bottom: 44px;
+} */
+
+/* @media screen and (min-width: 619px) {
     .popup__field:last-of-type {
         margin-bottom: 48px;
     }
-}
+} */
 

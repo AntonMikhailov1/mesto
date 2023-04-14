@@ -13,7 +13,7 @@
     <link rel="icon" type="image/png" href="images/fav/favicon-32x32.png" sizes="32x32">
     <link rel="stylesheet" href="pages/index.css">
 </head>
-<body class="page">
+<body class="page page_mouseover">
     <header class="header">
         <img class="header__logo" 
         src="images/logo.svg" 
@@ -49,17 +49,24 @@
             <h2 class="popup__title">Редактировать профиль</h2>
             <form action="submit" 
                   class="popup__form"
-                  method="post">
+                  method="post"
+                  novalidate>
                 <input class="popup__field popup__field_input_name" 
                         type="text"
                         name="profile-name" 
                         value="Жак-Ив Кусто" 
-                        required>
+                        required
+                        minlength="2"
+                        maxlength="40">
+                <span class="profile-name-error popup__field-error"></span>
                 <input class="popup__field popup__field_input_description" 
                         type="text" 
                         name="profile-description" 
                         value="Исследователь океана" 
-                        required>
+                        required
+                        minlength="2"
+                        maxlength="200">
+                <span class="profile-description-error popup__field-error"></span>
                 <button class="popup__submit-btn" type="submit">Сохранить</button>
             </form>
         </div>
@@ -77,13 +84,17 @@
                         name="place-name" 
                         value="" 
                         placeholder="Название"
-                        required>
+                        required
+                        minlength="2"
+                        maxlength="30">
+                <span class="place-name-error popup__field-error"></span>
                 <input class="popup__field popup__field_input_place-img-link" 
                         type="url" 
                         name="place-img-link" 
                         value="" 
                         placeholder="Ссылка на картинку"
                         required>
+                <span class="place-img-link-error popup__field-error"></span>
                 <button class="popup__submit-btn" type="submit">Сохранить</button>
             </form>
         </div>
@@ -106,6 +117,10 @@
         </li>
     </template>
 
+    <!-- Scripts -->
+    
+    <script src="scripts/validation.js"></script>
     <script src="scripts/index.js"></script>
+    
 </body>
 </html>
