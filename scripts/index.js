@@ -120,10 +120,10 @@ function closePopup(popup) {
 
 
 function submitPopupProfile(evt) {
-    evt.preventDefault();
-    profileName.textContent = fieldName.value;
-    profileDesc.textContent = fieldDesc.value;
-    closePopup(popupProfile);
+  evt.preventDefault();
+  profileName.textContent = fieldName.value;
+  profileDesc.textContent = fieldDesc.value;
+  closePopup(popupProfile);
 }
 
 function submitPopupElements(evt) {
@@ -134,9 +134,9 @@ function submitPopupElements(evt) {
 }
 
 function openPopupProfile(popupProfile) {
-    fieldName.value = profileName.textContent;
-    fieldDesc.value = profileDesc.textContent;
-    openPopup(popupProfile);
+  fieldName.value = profileName.textContent;
+  fieldDesc.value = profileDesc.textContent;
+  openPopup(popupProfile);
 }
 
 function openPopupElements(popupElements) {
@@ -194,22 +194,36 @@ function disablePointer() {
   page.classList.remove('page_mouseover');
 }
 
+function getAllChildren(element) {
+  if (element.children.length === 0) {
+    return [element]
+  }
+  let allChildElements = [];
+  for (let i = 0; i < element.children.length; i++) {
+    let children = getAllChildren(element.children[i]);
+    if (children) allChildElements.push(...children);
+  }
+  allChildElements.push(element);
+  return allChildElements;
+};
+
 function handlePopupCloseByOverlayClick(popup) {
-  page.addEventListener('mousedown', function closePopupByOverlayClick(evt) {
-    console.log(evt.target.class)
-    if (evt.target.classList.contains('page_mouseover') && !evt.target.classList.contains('popup')) {
-      closePopup(popup);
-      page.removeEventListener('mousedown', closePopupByOverlayClick);
-    }
+  page.addEventListener('pointerdown', function closePopupByOverlayClick(evt) {
+      if (!(getAllChildren(popup).some(child => evt.target.classList[0] === child.classList[0]))) {
+          closePopup(popup);
+          page.removeEventListener('pointerdown', closePopupByOverlayClick);
+      }
   });
-}
+};
+
 
 function handlePopupSubmit() {
   popupForms.forEach(popupForm => {
-    if (popupForm.closest === popupProfile) {
+    if (popupForm.closest('.popup') === popupProfile) {
+      console.log(popupProfile)
       popupForm.addEventListener('submit', submitPopupProfile);
     }
-    if (popupForm.closest === popupElements) {
+    if (popupForm.closest('.popup') === popupElements) {
       popupForm.addEventListener('submit', submitPopupElements);
     }
   });
