@@ -14,9 +14,9 @@ const editBtn = profile.querySelector('.profile__edit-btn');
 const addBtn = profile.querySelector('.profile__add-btn');
 
 // Popup
-const popupForms = page.querySelectorAll('.popup__form');
-const submitBtn = page.querySelector('.popup__submit-btn');
-const closeBtns = page.querySelectorAll('.popup__close-btn');
+const popupForms = Array.from(page.querySelectorAll('.popup__form'));
+const submitBtns = Array.from(page.querySelectorAll('.popup__submit-btn'));
+const closeBtns = Array.from(page.querySelectorAll('.popup__close-btn'));
 const fieldName = page.querySelector('.popup__field_input_name');
 const fieldDesc = page.querySelector('.popup__field_input_description');
 const fieldPlaceName= page.querySelector('.popup__field_input_place-name');
@@ -125,9 +125,9 @@ function submitPopupProfile(evt) {
 
 function submitPopupElements(evt) {
   evt.preventDefault();
-  cards.unshift({name: fieldPlaceName.value, link: fieldPlaceImgLink.value});
+  const cardObject = {name: fieldPlaceName.value, link: fieldPlaceImgLink.value};
   closePopup(popupElements);
-  prependCard(createCard(cards[0]));
+  prependCard(createCard(cardObject));
 }
 
 function openPopupProfile(popupProfile) {
@@ -139,6 +139,8 @@ function openPopupProfile(popupProfile) {
 function openPopupElements(popupElements) {
   fieldPlaceName.value = '';
   fieldPlaceImgLink.value = '';
+  const buttonElement = () => submitBtns.find(button => popupElements === button.closest('.popup_type_elements'));
+  disableSubmitButton(buttonElement(), validationConfig);
   openPopup(popupElements);
 }
 
