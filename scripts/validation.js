@@ -8,11 +8,11 @@ const validationConfig = {
 }
 
 function showInputError(formElement, inputElement, errorMessage, validationConfig) {
-    const errorElement = formElement.querySelector(`.${inputElement.name}-error`);
-    inputElement.classList.add(validationConfig.inputErrorClass);
-    errorElement.textContent = errorMessage;
-    errorElement.classList.add(validationConfig.errorClass);
-  };
+  const errorElement = formElement.querySelector(`.${inputElement.name}-error`);
+  inputElement.classList.add(validationConfig.inputErrorClass);
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add(validationConfig.errorClass);
+};
   
   function hideInputError(formElement, inputElement, validationConfig) {
   const errorElement = formElement.querySelector(`.${inputElement.name}-error`);
@@ -73,4 +73,18 @@ function toggleButtonState(inputList, buttonElement, validationConfig) {
   } else {
     enableSubmitButton(buttonElement, validationConfig);
   } 
+};
+
+function resetInputError(validationConfig) {
+  const formList = Array.from(document.querySelectorAll(validationConfig.formSelector));
+  formList.forEach((formElement) => {
+    const inputList = Array.from(formElement.querySelectorAll(validationConfig.inputSelector));
+    const buttonElement = formElement.querySelector(validationConfig.submitButtonSelector);
+    inputList.forEach((inputElement) => {
+      if (inputElement.validity.valid) {
+        hideInputError(formElement, inputElement, validationConfig);
+        enableSubmitButton(buttonElement, validationConfig);
+      }
+    });
+  });
 };

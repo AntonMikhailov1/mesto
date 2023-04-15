@@ -133,6 +133,7 @@ function submitPopupElements(evt) {
 function openPopupProfile(popupProfile) {
   fieldName.value = profileName.textContent;
   fieldDesc.value = profileDesc.textContent;
+  resetInputError(validationConfig);
   openPopup(popupProfile);
 }
 
@@ -208,10 +209,10 @@ function handlePopupProfileSubmit() {
   popupProfile.addEventListener('submit', submitPopupProfile);
 }
 
-handlePopupProfileSubmit() 
+handlePopupProfileSubmit();
 
 function handlePopupElementsSubmit() {
   popupElements.addEventListener('submit', submitPopupElements);
 }
 
-handlePopupElementsSubmit()
+handlePopupElementsSubmit();
