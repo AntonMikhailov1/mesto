@@ -13,7 +13,7 @@
     <link rel="icon" type="image/png" href="images/fav/favicon-32x32.png" sizes="32x32">
     <link rel="stylesheet" href="pages/index.css">
 </head>
-<body class="page page_mouseover">
+<body class="page">
     <header class="header">
         <img class="header__logo" 
         src="images/logo.svg" 
@@ -100,11 +100,14 @@
         </div>
     </div>
 
-    <figure class="popup popup_type_image-container">
-        <button type="button" class="popup__close-btn"></button>  
-        <img class="popup__image" src="/" alt="">
-        <figcaption class="popup__image-caption"></figcaption>
-    </figure>
+    <div class="popup popup_type_image-container">
+        <figure class="popup__image-container">
+            <button type="button" class="popup__close-btn"></button>  
+            <img class="popup__image" src="/" alt="">
+            <figcaption class="popup__image-caption"></figcaption>
+        </figure>
+    </div>
+    
     
     <template id="template-element">
         <li class="element">

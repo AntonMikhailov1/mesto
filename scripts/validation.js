@@ -32,7 +32,7 @@ function isValid(formElement, inputElement, validationConfig) {
 function setEventListeners(formElement, validationConfig) {
   const inputList = Array.from(formElement.querySelectorAll(validationConfig.inputSelector));
   const buttonElement = formElement.querySelector(validationConfig.submitButtonSelector);
-  disableSubmitButton(inputList, buttonElement, validationConfig);
+  toggleButtonState(inputList, buttonElement, validationConfig);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', () => {
       isValid(formElement, inputElement, validationConfig);
@@ -49,28 +49,28 @@ function enableValidation(validationConfig) {
   });
 };
 
+enableValidation(validationConfig);
+
 function hasInvalidInput(inputList) {
   return inputList.some((inputElement) => {
     return !inputElement.validity.valid;
   })
 };
 
-function disableSubmitButton(inputList, buttonElement, validationConfig) {
-  if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(validationConfig.inactiveButtonClass);
-    buttonElement.setAttribute('disabled', true);
-  } 
+function disableSubmitButton(buttonElement, validationConfig) {
+  buttonElement.classList.add(validationConfig.inactiveButtonClass);
+  buttonElement.setAttribute('disabled', true);
 }
 
-function enableSubmitButton(inputList, buttonElement, validationConfig) {
-  if (!hasInvalidInput(inputList)) {
-    buttonElement.classList.remove(validationConfig.inactiveButtonClass);
-    buttonElement.removeAttribute('disabled');
-    console.log(buttonElement);
-  }
+function enableSubmitButton(buttonElement, validationConfig) {
+  buttonElement.classList.remove(validationConfig.inactiveButtonClass);
+  buttonElement.removeAttribute('disabled');
 }
 
 function toggleButtonState(inputList, buttonElement, validationConfig) {
-  disableSubmitButton(inputList, buttonElement, validationConfig);
-  enableSubmitButton(inputList, buttonElement, validationConfig);
+  if (hasInvalidInput(inputList)) {
+    disableSubmitButton(buttonElement, validationConfig);
+  } else {
+    enableSubmitButton(buttonElement, validationConfig);
+  } 
 };

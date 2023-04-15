@@ -9,7 +9,6 @@
 /* Page */
 
 @import "../blocks/page/page.css";
-@import "../blocks/page/_mouseover/page_mouseover.css";
 
 /* Content */
 
@@ -53,9 +52,11 @@
 
 @import "../blocks/popup/popup.css";
 @import "../blocks/popup/_opened/popup_opened.css";
+@import "../blocks/popup/_mouseover/popup_mouseover.css";
 @import "../blocks/popup/__close-btn/popup__close-btn.css";
 @import "../blocks/popup/__container/popup__container.css";
 @import "../blocks/popup/_type/popup_type_image-container.css";
+@import "../blocks/popup/__image-container/popup__image-container.css";
 @import "../blocks/popup/__image/popup__image.css";
 @import "../blocks/popup/__image-caption/popup__image-caption.css";
 @import "../blocks/popup/__form/popup__form.css";
