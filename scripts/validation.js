@@ -52,9 +52,7 @@ function enableValidation(validationConfig) {
 enableValidation(validationConfig);
 
 function hasInvalidInput(inputList) {
-  return inputList.some((inputElement) => {
-    return !inputElement.validity.valid;
-  })
+  return inputList.some(inputElement => !inputElement.validity.valid)
 };
 
 function disableSubmitButton(buttonElement, validationConfig) {
@@ -75,16 +73,10 @@ function toggleButtonState(inputList, buttonElement, validationConfig) {
   } 
 };
 
-function resetInputError(validationConfig) {
-  const formList = Array.from(document.querySelectorAll(validationConfig.formSelector));
-  formList.forEach((formElement) => {
-    const inputList = Array.from(formElement.querySelectorAll(validationConfig.inputSelector));
-    const buttonElement = formElement.querySelector(validationConfig.submitButtonSelector);
-    inputList.forEach((inputElement) => {
-      if (inputElement.validity.valid) {
-        hideInputError(formElement, inputElement, validationConfig);
-        enableSubmitButton(buttonElement, validationConfig);
-      }
-    });
+function resetInputError(popup, validationConfig) {
+  const formElement = popup.querySelector(validationConfig.formSelector);
+  const inputList = Array.from(formElement.querySelectorAll(validationConfig.inputSelector));
+  inputList.forEach((inputElement) => {
+    hideInputError(formElement, inputElement, validationConfig);
   });
 };
