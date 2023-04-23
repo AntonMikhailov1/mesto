@@ -37,124 +37,79 @@
         </section>
 
         <section class="elements">
-            <ul class="elements__container">
-                <!-- <li class="element">
-                    <img class="element__image"
-                    src="images/yosemite.jpg" 
-                    alt="Йосемити" 
-                    >
-                    <div class="element__group">
-                        <h2 class="element__title">Йосемити</h2>
-                        <button type="button" class="element__like-btn"></button>
-                    </div>
-                </li>
-
-                <li class="element">
-                    <img class="element__image"
-                    src="images/altai.jpg" 
-                    alt="Алтай" 
-                    >
-                    <div class="element__group">
-                        <h2 class="element__title">Алтай</h2>
-                        <button class="element__like-btn"></button>
-                    </div>
-                </li>
-
-                <li class="element">
-                    <img class="element__image"
-                    src="images/iceland.jpg" 
-                    alt="Исландия" 
-                    >
-                    <div class="element__group">
-                        <h2 class="element__title">Исландия</h2>
-                        <button class="element__like-btn"></button>
-                    </div>
-                </li>
-
-                <li class="element">
-                    <img class="element__image"
-                    src="images/azores.jpg" 
-                    alt="Азорские острова" 
-                    >
-                    <div class="element__group">
-                        <h2 class="element__title">Азорские острова</h2>
-                        <button class="element__like-btn"></button>
-                    </div>
-                </li>
-
-                <li class="element">
-                    <img class="element__image"
-                    src="images/kamchatka.jpg" 
-                    alt="Камчатка" 
-                    >
-                    <div class="element__group">
-                        <h2 class="element__title">Камчатка</h2>
-                        <button class="element__like-btn"></button>
-                    </div>
-                </li>
-
-                <li class="element">
-                    <img class="element__image"
-                    src="images/moher.jpg" 
-                    alt="Утёсы Мохер" 
-                    >
-                    <div class="element__group">
-                        <h2 class="element__title">Утёсы Мохер</h2>
-                        <button class="element__like-btn"></button>
-                    </div>
-                </li>-->
-            </ul>
+            <ul class="elements__container"></ul>
         </section>    
     </main>
 
     <footer class="footer"><p class="footer__text">&copy; 2023 Mesto Russia</p></footer>
 
-    <div class="popup">
+    <div class="popup popup_type_profile">
         <div class="popup__container">
             <button type="button" class="popup__close-btn"></button>  
             <h2 class="popup__title">Редактировать профиль</h2>
             <form action="submit" 
-                class="popup__form"
-                method="post">
+                  class="popup__form"
+                  method="post"
+                  novalidate>
                 <input class="popup__field popup__field_input_name" 
                         type="text"
                         name="name" 
                         value="Жак-Ив Кусто" 
-                        required>
-                <input class="popup__field popup__field_input_discription" 
+                        required
+                        minlength="2"
+                        maxlength="40">
+                <span class="profile-name-error popup__field-error"></span>
+                <input class="popup__field popup__field_input_description" 
                         type="text" 
                         name="discription" 
                         value="Исследователь океана" 
-                        required>
+                        required
+                        minlength="2"
+                        maxlength="200">
+                <span class="profile-description-error popup__field-error"></span>
                 <button class="popup__submit-btn" type="submit">Сохранить</button>
             </form>
         </div>
     </div>
 
-    <div class="popup popup__elements">
+    <div class="popup popup_type_elements">
         <div class="popup__container">
             <button type="button" class="popup__close-btn"></button>  
             <h2 class="popup__title">Новое место</h2>
             <form action="submit" 
                   class="popup__form"
-                  method="post">
+                  method="post"
+                  novalidate>
                 <input class="popup__field popup__field_input_place-name" 
                         type="text"
                         name="place-name" 
                         value="" 
                         placeholder="Название"
-                        required>
+                        required
+                        minlength="2"
+                        maxlength="30">
+                <span class="place-name-error popup__field-error"></span>
                 <input class="popup__field popup__field_input_place-img-link" 
-                        type="text" 
+                        type="url" 
                         name="place-img-link" 
                         value="" 
                         placeholder="Ссылка на картинку"
                         required>
+                <span class="place-img-link-error popup__field-error"></span>
                 <button class="popup__submit-btn" type="submit">Сохранить</button>
             </form>
         </div>
     </div>
 
+    <div class="popup popup_type_image-container">
+        <figure class="popup__image-container">
+            <button type="button" class="popup__close-btn"></button>  
+            <img class="popup__image" src="/" alt="">
+            <figcaption class="popup__image-caption"></figcaption>
+        </figure>
+    </div>
+    
+    
     <template id="template-element">
         <li class="element">
             <button type="button" class="element__delete-btn"></button>
@@ -166,31 +121,10 @@
         </li>
     </template>
 
-    <div class="popup popup-cards">
-        <div class="popup__container">
-            <button type="button" class="popup__close-btn"></button>  
-            <h2 class="popup__title">Новое место</h2>
-            <form action="submit" 
-                class="popup__form"
-                method="post">
-                <input class="popup__field popup__field_input_place" 
-                        type="text"
-                        name="place"
-                        value=""
-                        placeholder="Название"
-                        required>
-                <input class="popup__field popup__field_input_image-link" 
-                        type="text"
-                        name = "image-link"
-                        value="Ссылка на картинку"
-                        required>
-                <button class="popup__submit-btn" type="submit">Сохранить</button>
-            </form>
-        </div>
-    </div>
+    <!-- Scripts -->
     
-        
-
+    <script src="scripts/validation.js"></script>
     <script src="scripts/index.js"></script>
+    
 </body>
 </html>
