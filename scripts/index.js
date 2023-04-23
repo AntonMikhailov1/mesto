@@ -24,11 +24,9 @@ const fieldPlaceImgLink = page.querySelector('.popup__field_input_place-img-link
 
 // Popup Profile
 const popupProfile = page.querySelector('.popup_type_profile');
-const popupProfileSubmitBtn = popupProfile.querySelector('.popup__submit-btn');
 
 // Popup Elements
 const popupElements = page.querySelector('.popup_type_elements');
-const popupElementsSubmitBtn = popupElements.querySelector('.popup__submit-btn');
 
 // Popup Image
 const popupImageContainer = page.querySelector('.popup_type_image-container');
@@ -135,16 +133,15 @@ function submitPopupElements(evt) {
 function openPopupProfile(popupProfile) {
   fieldName.value = profileName.textContent;
   fieldDesc.value = profileDesc.textContent;
-  resetInputError(popupProfile, validationConfig);
-  enableSubmitButton(popupProfileSubmitBtn, validationConfig);
+  resetInputError(validationConfig);
   openPopup(popupProfile);
 }
 
 function openPopupElements(popupElements) {
   fieldPlaceName.value = '';
   fieldPlaceImgLink.value = '';
-  resetInputError(popupElements, validationConfig);
-  disableSubmitButton(popupElementsSubmitBtn, validationConfig);
+  const buttonElement = () => submitBtns.find(button => popupElements === button.closest('.popup_type_elements'));
+  disableSubmitButton(buttonElement(), validationConfig);
   openPopup(popupElements);
 }
 
