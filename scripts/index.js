@@ -40,13 +40,18 @@ const validationConfig = {
 
 function renderInitialCards(cards) {
   cards.forEach(card => {
-    const newCard = new Card(card);
-    newCard.appendCard();
-    newCard.openPopupImage();
+    const newCard = new Card(card, elements.cardTemplate);
+    elements.cardContainer.append(newCard.createCard());
   });
 }
 
 renderInitialCards(cards);
+
+const popupProfileValidator = new FormValidator(validationConfig, elements.popupProfileForm);
+popupProfileValidator.enableValidation();
+
+const popupElementsValidator = new FormValidator(validationConfig, elements.popupElementsForm);
+popupElementsValidator.enableValidation();
 
 export function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -62,15 +67,6 @@ function closePopup(popup) {
   disablePointer(popup);
 }
 
-function executeFormValidator() {
-  elements.popupForms.forEach(formElement => {
-    const formValidator = new FormValidator(validationConfig, formElement);
-    formValidator.enableValidation();
-  })
-}
-
-executeFormValidator();
-
 function submitPopupProfile(evt) {
   evt.preventDefault();
   elements.profileName.textContent = elements.fieldName.value;
@@ -81,9 +77,8 @@ function submitPopupProfile(evt) {
 function submitPopupElements(evt) {
   evt.preventDefault();
   const cardObject = {name: elements.fieldPlaceName.value, link: elements.fieldPlaceImgLink.value};
-  const newCard = new Card(cardObject);
-  newCard.prependCard();
-  newCard.openPopupImage();
+  const newCard = new Card(cardObject, elements.cardTemplate);
+  elements.cardContainer.prepend(newCard.createCard());;
   closePopup(elements.popupElements);
 }
 
@@ -91,16 +86,13 @@ function openPopupProfile() {
   elements.fieldName.value = elements.profileName.textContent;
   elements.fieldDesc.value = elements.profileDesc.textContent;
   openPopup(elements.popupProfile);
-  const formValidator = new FormValidator(validationConfig, elements.popupProfile);
-  formValidator.resetInputErrors();
+  popupProfileValidator.resetInputErrors();
 }
 
 function openPopupElements() {
-  elements.fieldPlaceName.value = '';
-  elements.fieldPlaceImgLink.value = '';
+  elements.popupElementsForm.reset();
   openPopup(elements.popupElements);
-  const formValidator = new FormValidator(validationConfig, elements.popupElements);
-  formValidator.resetInputErrors();
+  popupElementsValidator.resetInputErrors();
 }
 
 function handlePopupProfileOpen() {
