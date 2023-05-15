@@ -40,8 +40,7 @@ const validationConfig = {
 
 function renderInitialCards(cards) {
   cards.forEach(card => {
-    const newCard = new Card(card, elements.cardTemplate);
-    elements.cardContainer.append(newCard.createCard());
+    elements.cardContainer.append(createCard(card));
   });
 }
 
@@ -52,6 +51,12 @@ popupProfileValidator.enableValidation();
 
 const popupElementsValidator = new FormValidator(validationConfig, elements.popupElementsForm);
 popupElementsValidator.enableValidation();
+
+function createCard(item) {
+  const newCard = new Card(item, elements.cardTemplate);
+  const cardElement = newCard.createCard();
+  return cardElement
+}
 
 export function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -77,8 +82,7 @@ function submitPopupProfile(evt) {
 function submitPopupElements(evt) {
   evt.preventDefault();
   const cardObject = {name: elements.fieldPlaceName.value, link: elements.fieldPlaceImgLink.value};
-  const newCard = new Card(cardObject, elements.cardTemplate);
-  elements.cardContainer.prepend(newCard.createCard());;
+  elements.cardContainer.prepend(createCard(cardObject));
   closePopup(elements.popupElements);
 }
 
