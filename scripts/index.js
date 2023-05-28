@@ -1,174 +1,90 @@
-import Card from "./Card.js";
-import FormValidator from "./FormValidator.js";
-import * as elements from "./elements.js";
+import Card from "./components/Card.js";
+import Section from "./components/Section.js";
+import FormValidator from "./components/FormValidator.js";
+import PopupWithImage from "./components/PopupWithImage.js";
+import PopupWithForm from "./components/PopupWithForm.js";
+import UserInfo from "./components/UserInfo.js";
+import {
+  cards,
+  validationConfig,
+  profileSelectors,
+  cardTemplateSelector,
+  popupProfileSelector,
+  popupElementsSelector,
+  popupImageContainerSelector,
+  cardContainerSelector,
+  popupProfileForm,
+  popupElementsForm,
+  editBtn,
+  addBtn,
+} from "./utilis/constants.js";
 
-const cards = [
-  {
-    name: "Йосемити",
-    link: "images/yosemite.jpg",
-  },
-  {
-    name: "Алтай",
-    link: "images/altai.jpg",
-  },
-  {
-    name: "Исландия",
-    link: "images/iceland.jpg",
-  },
-  {
-    name: "Азорские острова",
-    link: "images/azores.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "images/kamchatka.jpg",
-  },
-  {
-    name: "Утёсы Мохер",
-    link: "images/moher.jpg",
-  },
-];
+const userInfo = new UserInfo(profileSelectors);
 
-const validationConfig = {
-  formSelector: ".popup__form",
-  inputSelector: ".popup__field",
-  submitButtonSelector: ".popup__submit-btn",
-  inactiveButtonClass: "popup__submit-btn_inactive",
-  inputErrorClass: "popup__field_type_error",
-  errorClass: "popup__field-error_active",
-};
+const popupImage = new PopupWithImage(popupImageContainerSelector);
+popupImage.setEventListeners();
 
-function renderInitialCards(cards) {
-  cards.forEach((card) => {
-    elements.cardContainer.append(createCard(card));
-  });
-}
+const popupProfile = new PopupWithForm(popupProfileSelector, (evt) => {
+  evt.preventDefault();
+  userInfo.setUserInfo(popupProfile.getInputValues());
+  popupProfile.close();
+});
+popupProfile.setEventListeners();
 
-renderInitialCards(cards);
+const popupElements = new PopupWithForm(popupElementsSelector, (evt) => {
+  evt.preventDefault();
+  const card = new Card(
+    popupElements.getInputValues(),
+    cardTemplateSelector,
+    popupImage.open
+  );
+  section.cardContainer.prepend(card.createCard());
+  popupElements.close();
+});
+popupElements.setEventListeners();
+
+const section = new Section(
+  {
+    items: cards,
+    renderer: (item) => {
+      const newCard = new Card(
+        item, 
+        cardTemplateSelector, 
+        popupImage.open
+      );
+      const cardElement = newCard.createCard();
+      return cardElement;
+    },
+  },
+  cardContainerSelector
+);
+section.renderItems();
 
 const popupProfileValidator = new FormValidator(
   validationConfig,
-  elements.popupProfileForm
+  popupProfileForm
 );
 popupProfileValidator.enableValidation();
 
 const popupElementsValidator = new FormValidator(
   validationConfig,
-  elements.popupElementsForm
+  popupElementsForm
 );
 popupElementsValidator.enableValidation();
 
-function createCard(item) {
-  const newCard = new Card(item, elements.cardTemplate);
-  const cardElement = newCard.createCard();
-  return cardElement;
-}
-
-export function openPopup(popup) {
-  popup.classList.add("popup_opened");
-  elements.content.classList.add("content_inactive");
-  document.addEventListener("keydown", closeByEsc);
-  enablePointer(popup);
-}
-
-function closePopup(popup) {
-  popup.classList.remove("popup_opened");
-  elements.content.classList.remove("content_inactive");
-  document.removeEventListener("keydown", closeByEsc);
-  disablePointer(popup);
-}
-
-function submitPopupProfile(evt) {
-  evt.preventDefault();
-  elements.profileName.textContent = elements.fieldName.value;
-  elements.profileDesc.textContent = elements.fieldDesc.value;
-  closePopup(elements.popupProfile);
-}
-
-function submitPopupElements(evt) {
-  evt.preventDefault();
-  const cardObject = {
-    name: elements.fieldPlaceName.value,
-    link: elements.fieldPlaceImgLink.value,
-  };
-  elements.cardContainer.prepend(createCard(cardObject));
-  closePopup(elements.popupElements);
-}
-
-function openPopupProfile() {
-  elements.fieldName.value = elements.profileName.textContent;
-  elements.fieldDesc.value = elements.profileDesc.textContent;
-  openPopup(elements.popupProfile);
-  popupProfileValidator.resetInputErrors();
-}
-
-function openPopupElements() {
-  elements.popupElementsForm.reset();
-  openPopup(elements.popupElements);
-  popupElementsValidator.resetInputErrors();
-}
-
 function handlePopupProfileOpen() {
-  elements.editBtn.addEventListener("click", () =>
-    openPopupProfile(elements.popupProfile)
-  );
+  editBtn.addEventListener("click", () => {
+    popupProfileValidator.resetInputErrors;
+    popupProfile.setInputValues(userInfo.getUserInfo());
+    popupProfile.open();
+  });
 }
-
 handlePopupProfileOpen();
 
 function handlePopupElementsOpen() {
-  elements.addBtn.addEventListener("click", () =>
-    openPopupElements(elements.popupElements)
-  );
+  addBtn.addEventListener("click", () => {
+    popupElements.popupForm.reset();
+    popupElements.open();
+  });
 }
-
 handlePopupElementsOpen();
-
-function handlePopupClose() {
-  elements.closeBtns.forEach((closeBtn) => {
-    const popup = closeBtn.closest(".popup");
-    closeBtn.addEventListener("click", () => closePopup(popup));
-  });
-}
-
-handlePopupClose();
-
-function closeByEsc(evt) {
-  if (evt.key === "Escape") {
-    const openedPopup = document.querySelector(".popup_opened");
-    closePopup(openedPopup);
-  }
-}
-
-export function enablePointer(popup) {
-  popup.classList.add("popup_mouseover");
-}
-
-function disablePointer(popup) {
-  popup.classList.remove("popup_mouseover");
-}
-
-function handlePopupCloseByOverlayClick() {
-  const popupList = document.querySelectorAll(".popup");
-  popupList.forEach((popup) => {
-    popup.addEventListener("pointerdown", (evt) => {
-      if (evt.target.classList.contains("popup")) {
-        closePopup(popup);
-      }
-    });
-  });
-}
-
-handlePopupCloseByOverlayClick();
-
-function handlePopupProfileSubmit() {
-  elements.popupProfile.addEventListener("submit", submitPopupProfile);
-}
-
-handlePopupProfileSubmit();
-
-function handlePopupElementsSubmit() {
-  elements.popupElements.addEventListener("submit", submitPopupElements);
-}
-
-handlePopupElementsSubmit();

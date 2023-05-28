@@ -1,128 +1,144 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mesto</title>
-    <meta name="title" content="Социальная сеть для путешественников">
-    <meta name="description" content="Социальная сеть для путешественников">
-    <meta name="keywords" content="Mesto, Путешествие, Россия, Мир, Природа, Социальная сеть">
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="Russian">
-    <link rel="icon" type="image/png" href="images/fav/favicon-32x32.png" sizes="32x32">
-    <link rel="stylesheet" href="pages/index.css">
+    <meta name="title" content="Социальная сеть для путешественников" />
+    <meta name="description" content="Социальная сеть для путешественников" />
+    <meta
+      name="keywords"
+      content="Mesto, Путешествие, Россия, Мир, Природа, Социальная сеть"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="Russian" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="images/fav/favicon-32x32.png"
+      sizes="32x32"
+    />
+    <link rel="stylesheet" href="pages/index.css" />
     <script type="module" src="scripts/index.js" defer></script>
-    <script type="module" src="scripts/elements.js" defer></script>
-    <script type="module" src="scripts/FormValidator.js" defer></script>
-    <script type="module" src="scripts/Card.js" defer></script>
-</head>
-<body class="page">
+    <script type="module" src="scripts/utilis/constants.js" defer></script>
+    <script type="module" src="scripts/utilis/utilis.js" defer></script>
+    <script type="module" src="scripts/components/FormValidator.js" defer></script>
+    <script type="module" src="scripts/components/Card.js" defer></script>
+    <script type="module" src="scripts/components/Section.js" defer></script>
+    <script type="module" src="scripts/components/Popup.js" defer></script>
+    <script type="module" src="scripts/components/PopupWithForm.js" defer></script>
+    <script type="module" src="scripts/components/PopupWithImage.js" defer></script>
+  </head>
+  <body class="page">
     <header class="header">
-        <img class="header__logo" 
-        src="images/logo.svg" 
-        alt="Лого Mesto">
+      <img class="header__logo" src="images/logo.svg" alt="Лого Mesto" />
     </header>
 
     <main class="content">
-        <section class="profile">
-            <img class="profile__avatar" 
-            src="images/avatar.jpg" 
-            alt="Фотография профиля">
-            <div class="profile__info">
-                    <div class="profile__name-container">
-                        <h1 class="profile__name">Жак-Ив Кусто</h1>
-                        <button type="button" class="profile__edit-btn"></button>  
-                    </div>
-                    
-                <p class="profile__desc">Исследователь океана</p>
-            </div>
-            <button type="button" class="profile__add-btn"></button>
-        </section>
+      <section class="profile">
+        <img
+          class="profile__avatar"
+          src="images/avatar.jpg"
+          alt="Фотография профиля"
+        />
+        <div class="profile__info">
+          <div class="profile__name-container">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <button type="button" class="profile__edit-btn"></button>
+          </div>
 
-        <section class="elements">
-            <ul class="elements__container"></ul>
-        </section>    
+          <p class="profile__desc">Исследователь океана</p>
+        </div>
+        <button type="button" class="profile__add-btn"></button>
+      </section>
+
+      <section class="elements">
+        <ul class="elements__container"></ul>
+      </section>
     </main>
 
-    <footer class="footer"><p class="footer__text">&copy; 2023 Mesto Russia</p></footer>
+    <footer class="footer">
+      <p class="footer__text">&copy; 2023 Mesto Russia</p>
+    </footer>
 
     <div class="popup popup_type_profile">
-        <div class="popup__container">
-            <button type="button" class="popup__close-btn"></button>  
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <form action="submit" 
-                  class="popup__form"
-                  method="post"
-                  novalidate>
-                <input class="popup__field popup__field_input_name" 
-                        type="text"
-                        name="profile-name" 
-                        value="Жак-Ив Кусто" 
-                        required
-                        minlength="2"
-                        maxlength="40">
-                <span class="profile-name-error popup__field-error"></span>
-                <input class="popup__field popup__field_input_description" 
-                        type="text" 
-                        name="profile-description" 
-                        value="Исследователь океана" 
-                        required
-                        minlength="2"
-                        maxlength="200">
-                <span class="profile-description-error popup__field-error"></span>
-                <button class="popup__submit-btn" type="submit">Сохранить</button>
-            </form>
-        </div>
+      <div class="popup__container">
+        <button type="button" class="popup__close-btn"></button>
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <form action="submit" class="popup__form" method="post" novalidate>
+          <input
+            class="popup__field popup__field_input_username"
+            type="text"
+            name="username"
+            value="Жак-Ив Кусто"
+            required
+            minlength="2"
+            maxlength="40"
+          />
+          <span class="username-error popup__field-error"></span>
+          <input
+            class="popup__field popup__field_input_description"
+            type="text"
+            name="description"
+            value="Исследователь океана"
+            required
+            minlength="2"
+            maxlength="200"
+          />
+          <span class="description-error popup__field-error"></span>
+          <button class="popup__submit-btn" type="submit">Сохранить</button>
+        </form>
+      </div>
     </div>
 
     <div class="popup popup_type_elements">
-        <div class="popup__container">
-            <button type="button" class="popup__close-btn"></button>  
-            <h2 class="popup__title">Новое место</h2>
-            <form action="submit" 
-                  class="popup__form"
-                  method="post"
-                  novalidate>
-                <input class="popup__field popup__field_input_place-name" 
-                        type="text"
-                        name="place-name" 
-                        value="" 
-                        placeholder="Название"
-                        required
-                        minlength="2"
-                        maxlength="30">
-                <span class="place-name-error popup__field-error"></span>
-                <input class="popup__field popup__field_input_place-img-link" 
-                        type="url" 
-                        name="place-img-link" 
-                        value="" 
-                        placeholder="Ссылка на картинку"
-                        required>
-                <span class="place-img-link-error popup__field-error"></span>
-                <button class="popup__submit-btn" type="submit">Сохранить</button>
-            </form>
-        </div>
+      <div class="popup__container">
+        <button type="button" class="popup__close-btn"></button>
+        <h2 class="popup__title">Новое место</h2>
+        <form action="submit" class="popup__form" method="post" novalidate>
+          <input
+            class="popup__field popup__field_input_name"
+            type="text"
+            name="name"
+            value=""
+            placeholder="Название"
+            required
+            minlength="2"
+            maxlength="30"
+          />
+          <span class="name-error popup__field-error"></span>
+          <input
+            class="popup__field popup__field_input_link"
+            type="url"
+            name="link"
+            value=""
+            placeholder="Ссылка на картинку"
+            required
+          />
+          <span class="link-error popup__field-error"></span>
+          <button class="popup__submit-btn" type="submit">Сохранить</button>
+        </form>
+      </div>
     </div>
 
     <div class="popup popup_type_image-container">
-        <figure class="popup__image-container">
-            <button type="button" class="popup__close-btn"></button>  
-            <img class="popup__image" src="/" alt="">
-            <figcaption class="popup__image-caption"></figcaption>
-        </figure>
+      <figure class="popup__image-container">
+        <button type="button" class="popup__close-btn"></button>
+        <img class="popup__image" src="/" alt="" />
+        <figcaption class="popup__image-caption"></figcaption>
+      </figure>
     </div>
-    
-    
+
     <template id="template-element">
-        <li class="element">
-            <button type="button" class="element__delete-btn"></button>
-            <img class="element__image">
-            <div class="element__group">
-                <h2 class="element__title"></h2>
-                <button type="button" class="element__like-btn"></button>
-            </div>
-        </li>
+      <li class="element">
+        <button type="button" class="element__delete-btn"></button>
+        <img class="element__image" />
+        <div class="element__group">
+          <h2 class="element__title"></h2>
+          <button type="button" class="element__like-btn"></button>
+        </div>
+      </li>
     </template>
-</body>
+  </body>
 </html>
