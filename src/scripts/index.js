@@ -1,4 +1,4 @@
-import '../pages/index.css';
+import "../pages/index.css";
 import Card from "./components/Card.js";
 import Section from "./components/Section.js";
 import FormValidator from "./components/FormValidator.js";
@@ -32,27 +32,11 @@ const popupProfile = new PopupWithForm(popupProfileSelector, (evt) => {
 });
 popupProfile.setEventListeners();
 
-const popupElements = new PopupWithForm(popupElementsSelector, (evt) => {
-  evt.preventDefault();
-  const card = new Card(
-    popupElements.getInputValues(),
-    cardTemplateSelector,
-    popupImage.open
-  );
-  section.cardContainer.prepend(card.createCard());
-  popupElements.close();
-});
-popupElements.setEventListeners();
-
 const section = new Section(
   {
     items: cards,
     renderer: (item) => {
-      const newCard = new Card(
-        item, 
-        cardTemplateSelector, 
-        popupImage.open
-      );
+      const newCard = new Card(item, cardTemplateSelector, popupImage.open);
       const cardElement = newCard.createCard();
       return cardElement;
     },
@@ -60,6 +44,15 @@ const section = new Section(
   cardContainerSelector
 );
 section.renderItems();
+
+const popupElements = new PopupWithForm(popupElementsSelector, (evt) => {
+evt.preventDefault();
+section.cardContainer.prepend(
+  section.renderer(popupElements.getInputValues())
+);
+popupElements.close();
+});
+popupElements.setEventListeners();
 
 const popupProfileValidator = new FormValidator(
   validationConfig,
@@ -75,7 +68,7 @@ popupElementsValidator.enableValidation();
 
 function handlePopupProfileOpen() {
   editBtn.addEventListener("click", () => {
-    popupProfileValidator.resetInputErrors;
+    popupProfileValidator.resetInputErrors();
     popupProfile.setInputValues(userInfo.getUserInfo());
     popupProfile.open();
   });
@@ -84,7 +77,7 @@ handlePopupProfileOpen();
 
 function handlePopupElementsOpen() {
   addBtn.addEventListener("click", () => {
-    popupElements.popupForm.reset();
+    popupElementsValidator.resetInputErrors();
     popupElements.open();
   });
 }

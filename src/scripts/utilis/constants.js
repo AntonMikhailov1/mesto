@@ -1,11 +1,8 @@
 // // Page
 export const page = document.querySelector(".page");
 
-// // Content
-export const content = document.querySelector(".content");
-
 // // Profile
-export const profile = content.querySelector(".profile");
+export const profile = page.querySelector(".profile");
 export const editBtn = profile.querySelector(".profile__edit-btn");
 export const addBtn = profile.querySelector(".profile__add-btn");
 
