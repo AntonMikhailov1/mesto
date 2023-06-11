@@ -1,15 +1,19 @@
 {
   "dependencies": {
     "core-js": "^3.30.2",
+    "http-proxy-middleware": "^2.0.6",
     "no-scroll": "^2.1.1"
   },
   "name": "mesto",
-  "description": "Mesto - проект для 4-го спринта Яндекс.Практикум",
+  "description": "Mesto - проект Яндекс.Практикум",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start": "export WDS_SOCKET_PORT=443",
     "build": "webpack --mode production",
-    "dev": "webpack serve"
+    "dev": "webpack serve",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "author": "",
   "license": "ISC",
@@ -21,6 +25,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.8.1",
     "cssnano": "^6.0.1",
+    "gh-pages": "^5.0.0",
     "html-webpack-plugin": "^5.5.1",
     "mini-css-extract-plugin": "^2.7.6",
     "postcss-loader": "^7.3.2",

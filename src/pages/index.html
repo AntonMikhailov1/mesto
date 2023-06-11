@@ -27,18 +27,20 @@
 
     <main class="content">
       <section class="profile">
-        <img
-          class="profile__avatar"
-          src="<%=require('../images/avatar.jpg')%>"
-          alt="Фотография профиля"
-        />
+        <button type="button" class="profile__avatar-overlay">
+          <img
+            class="profile__avatar"
+            src=""
+            alt="Аватар профиля"
+          />  
+        </button>
         <div class="profile__info">
           <div class="profile__name-container">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <h1 class="profile__name"></h1>
             <button type="button" class="profile__edit-btn"></button>
           </div>
 
-          <p class="profile__desc">Исследователь океана</p>
+          <p class="profile__desc"></p>
         </div>
         <button type="button" class="profile__add-btn"></button>
       </section>
@@ -52,36 +54,38 @@
       <p class="footer__text">&copy; 2023 Mesto Russia</p>
     </footer>
 
+    <!-- PROFILE POPUP  -->
     <div class="popup popup_type_profile">
       <div class="popup__container">
         <button type="button" class="popup__close-btn"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form action="submit" class="popup__form" method="post" novalidate>
           <input
-            class="popup__field popup__field_input_username"
+            class="popup__field popup__field_input_name"
             type="text"
-            name="username"
+            name="name"
             value="Жак-Ив Кусто"
             required
             minlength="2"
             maxlength="40"
           />
-          <span class="username-error popup__field-error"></span>
+          <span class="name-error popup__field-error"></span>
           <input
-            class="popup__field popup__field_input_description"
+            class="popup__field popup__field_input_about"
             type="text"
-            name="description"
+            name="about"
             value="Исследователь океана"
             required
             minlength="2"
             maxlength="200"
           />
-          <span class="description-error popup__field-error"></span>
+          <span class="about-error popup__field-error"></span>
           <button class="popup__submit-btn" type="submit">Сохранить</button>
         </form>
       </div>
     </div>
 
+    <!-- CARD POPUP  -->
     <div class="popup popup_type_elements">
       <div class="popup__container">
         <button type="button" class="popup__close-btn"></button>
@@ -112,6 +116,38 @@
       </div>
     </div>
 
+    <!-- AVATAR POPUP  -->
+    <div class="popup popup_type_avatar">
+      <div class="popup__avatar-container">
+        <button type="button" class="popup__close-btn"></button>
+        <h2 class="popup__title">Обновить аватар</h2>
+        <form action="submit" class="popup__form" method="post" novalidate>
+          <input
+            class="popup__field popup__field_input_link"
+            type="url"
+            name="avatar"
+            value=""
+            placeholder="Ссылка на картинку"
+            required
+          />
+          <span class="avatar-error popup__field-error"></span>
+          <button class="popup__submit-btn" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- CONFIRMATION POPUP  -->
+    <div class="popup popup_type_confirmation">
+      <div class="popup__confirm-container">
+        <button type="button" class="popup__close-btn"></button>
+        <h2 class="popup__title">Вы уверены?</h2>
+        <form action="submit" class="popup__form" method="post" novalidate>
+          <button class="popup__submit-btn" type="submit">Да</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- IMAGE POPUP  -->
     <div class="popup popup_type_image-container">
       <figure class="popup__image-container">
         <button type="button" class="popup__close-btn"></button>
@@ -120,13 +156,18 @@
       </figure>
     </div>
 
+    <!-- CARD TEMPLATE  -->
     <template id="template-element">
       <li class="element">
         <button type="button" class="element__delete-btn"></button>
         <img class="element__image" />
         <div class="element__group">
           <h2 class="element__title"></h2>
-          <button type="button" class="element__like-btn"></button>
+          <div class="element__like">
+            <button type="button" class="element__like-btn"></button>
+            <span class="element__like-counter"></span>
+          </div>
+
         </div>
       </li>
     </template>
