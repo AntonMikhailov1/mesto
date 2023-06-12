@@ -1,32 +1,38 @@
 import Popup from "./Popup.js";
 
 export default class PopupWithConfirmation extends Popup {
+  #submitPopup;
+  #popupForm;
+  #submitBtn;
+  #card;
+  #cardId;
+
   constructor(popupSelector, submitPopup) {
     super(popupSelector);
-    this._submitPopup = submitPopup;
-    this._popupForm = this._popup.querySelector(".popup__form");
-    this._submitBtn = this._popupForm.querySelector(".popup__submit-btn");
+    this.#submitPopup = submitPopup;
+    this.#popupForm = this.popup.querySelector(".popup__form");
+    this.#submitBtn = this.#popupForm.querySelector(".popup__submit-btn");
   }
 
   waitForResponse() {
-    this._submitBtn.textContent = "Удаление...";
+    this.#submitBtn.textContent = "Удаление...";
   }
 
   setDefaultSubmitBtn() {
-    this._submitBtn.textContent = "Да";
+    this.#submitBtn.textContent = "Да";
   }
 
   open = ({ card, cardId }) => {
     super.open();
-    this._card = card;
-    this._cardId = cardId;
+    this.#card = card;
+    this.#cardId = cardId;
   };
 
   setEventListeners() {
     super.setEventListeners();
-    this._popupForm.addEventListener("submit", (evt) => {
+    this.#popupForm.addEventListener("submit", (evt) => {
       evt.preventDefault();
-      this._submitPopup({ card: this._card, cardId: this._cardId });
+      this.#submitPopup({ card: this.#card, cardId: this.#cardId });
     });
   }
 }

@@ -34,17 +34,13 @@ const api = new Api({
   },
 });
 
-// PROMISE.ALL API
-Promise.all([api.getProfileInfo(), api.getInitialCards()])
-  .then(([userData, cardData]) => {
-    userInfo.setUserInfo(userData);
-    section.renderItems(cardData);
-  })
-  .catch((err) => console.error(err));
+// userInfo INSTANCE
+const userInfo = new UserInfo(profileSelectors);
 
 // CREATE NEW CARD FUNCTION
 function createNewCard(item) {
   const newCard = new Card(
+    userInfo.myId,
     item,
     cardTemplateSelector,
     popupImage.open,
@@ -54,26 +50,26 @@ function createNewCard(item) {
         api
           .deleteCardLike(cardId)
           .then((res) => {
-            console.log(res);
             newCard.toggleLikeBtn(res.likes);
           })
-          .catch((err) => console.error(err));
+          .catch((err) => console.error("Ошибка при убирании лайка:", err));
       } else {
         api
           .addCardLike(cardId)
           .then((res) => {
-            console.log(res);
             newCard.toggleLikeBtn(res.likes);
           })
-          .catch((err) => console.error("Ошибка при добавлении лайка", err));
+          .catch((err) => console.error("Ошибка при добавлении лайка:", err));
       }
     }
   );
   return newCard.createCard();
 }
 
-// userInfo INSTANCE
-const userInfo = new UserInfo(profileSelectors);
+// // RENDERING SECTION
+const section = new Section((item) => {
+  section.appendItem(createNewCard(item));
+}, cardContainerSelector);
 
 // popupImage INSTANCE
 const popupImage = new PopupWithImage(popupImageContainerSelector);
@@ -98,52 +94,44 @@ const popupConfirmation = new PopupWithConfirmation(
 popupConfirmation.setEventListeners();
 
 // popupProfile INSTANCE
-const popupProfile = new PopupWithForm(popupProfileSelector, (evt) => {
-  evt.preventDefault();
+const popupProfile = new PopupWithForm(popupProfileSelector, (inputValues) => {
   popupProfile.waitForResponse();
   api
-    .setProfileInfo(popupProfile.getInputValues())
+    .setProfileInfo(inputValues)
     .then((userData) => {
       userInfo.setUserInfo(userData);
+      popupProfile.close();
     })
     .catch((err) => console.error(err))
     .finally(() => popupProfile.setDefaultSubmitBtn());
-  popupProfile.close();
 });
 popupProfile.setEventListeners();
 
 // popupAvatar INSTANCE
-const popupAvatar = new PopupWithForm(popupAvatarSelector, (evt) => {
-  evt.preventDefault();
+const popupAvatar = new PopupWithForm(popupAvatarSelector, (inputValues) => {
   popupAvatar.waitForResponse();
   api
-    .setAvatar(popupAvatar.getInputValues())
+    .setAvatar(inputValues)
     .then((userData) => {
-      userInfo.setUserInfo(userData);  
+      userInfo.setUserInfo(userData);
+      popupAvatar.close();
     })
     .catch((err) => console.error(err))
     .finally(() => popupAvatar.setDefaultSubmitBtn());
-  popupAvatar.close(); 
 });
 popupAvatar.setEventListeners();
 
-// // RENDERING SECTION
-const section = new Section((item) => {
-  section.addItem(createNewCard(item));
-}, cardContainerSelector);
-
 // popupElements INSTANCE
-const popupElements = new PopupWithForm(popupElementsSelector, (evt) => {
-  evt.preventDefault();
+const popupElements = new PopupWithForm(popupElementsSelector, (inputValues) => {
   popupElements.waitForResponse();
   api
-    .addCard(popupElements.getInputValues())
+    .addCard(inputValues)
     .then((item) => {
-      section.cardContainer.prepend(createNewCard(item));
+      section.prependItem(createNewCard(item));
+      popupElements.close();
     })
     .catch((err) => console.error(err))
     .finally(() => popupElements.setDefaultSubmitBtn());
-  popupElements.close();
 });
 popupElements.setEventListeners();
 
@@ -195,3 +183,11 @@ function handlePopupAvatarOpen() {
   });
 }
 handlePopupAvatarOpen();
+
+// PROMISE.ALL API
+Promise.all([api.getProfileInfo(), api.getInitialCards()])
+  .then(([userData, cardData]) => {
+    userInfo.setUserInfo(userData);
+    section.renderItems(cardData);
+  })
+  .catch((err) => console.error(err));

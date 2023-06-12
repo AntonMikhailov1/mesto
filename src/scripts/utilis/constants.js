@@ -30,7 +30,6 @@ export const popupImageContainerSelector = ".popup_type_image-container";
 export const cardContainerSelector = ".elements__container";
 
 export const validationConfig = {
-  formSelector: ".popup__form",
   inputSelector: ".popup__field",
   submitButtonSelector: ".popup__submit-btn",
   inactiveButtonClass: "popup__submit-btn_inactive",
