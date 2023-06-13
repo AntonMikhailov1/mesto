@@ -84,11 +84,10 @@ const popupConfirmation = new PopupWithConfirmation(
       .deleteCard(cardId)
       .then(() => {
         card.deleteCard();
-        
+        popupConfirmation.close();
       })
       .catch((err) => console.error(err))
       .finally(() => popupConfirmation.setDefaultSubmitBtn());
-    popupConfirmation.close();
   }
 );
 popupConfirmation.setEventListeners();
